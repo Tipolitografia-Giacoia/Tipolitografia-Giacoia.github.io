@@ -1371,7 +1371,7 @@ html::after {
 
 .map-container { 
     width: 100%; 
-    height: 327px; 
+    height: 342px; 
     background-color: var(--color-surface); 
     border-radius: var(--radius-lg); 
     overflow: hidden; 
