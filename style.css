@@ -1404,6 +1404,20 @@ html::after {
   margin-top: 1rem;
 }
 
+.section-subtitle {
+    text-align: center;
+    font-family: var(--font-body); /* Usa il font del corpo testo (AirbnbCereal) */
+    font-size: clamp(1rem, 3vw, 1.2rem); /* Dimensione fluida: piccolo su mobile, grande su PC */
+    color: #ffffff !important; /* Forza il bianco come richiesto per questa sezione */
+    margin-top: -1.5rem; /* Avvicina il sottotitolo al titolo principale */
+    margin-bottom: 2.5rem; /* Crea spazio prima della griglia dei contatti */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Leggera ombra per leggibilità sullo sfondo */
+}
+
+
 /* Hover più acceso */
 .contact-form-column .cta-button:hover {
   background: linear-gradient(90deg, #7E1ED3, #F1328B);
@@ -2369,6 +2383,16 @@ body {
 
   /* === SEZIONE CONTATTACI === */
   /* Le colonne delle info e del form vanno una sotto l'altra */
+  .section-subtitle {
+      /* MODIFICA QUI: Aumentato il valore negativo per farlo salire di più */
+      margin-top: -1.5rem !important; 
+      
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      padding: 0 1rem;
+      line-height: 1.2;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr; /* Una sola colonna */
     gap: 3rem; /* Spazio verticale tra i blocchi */
