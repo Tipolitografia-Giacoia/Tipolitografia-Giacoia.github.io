@@ -935,14 +935,13 @@ html::after {
 
 .chi-siamo-grid-new {
     display: grid;
-    /* Colonne proporzionali: 1.2fr è circa il 55% e 1fr il 45% del totale */
     grid-template-columns: 1.2fr 1fr;
-    gap: clamp(1.5rem, 3vw, 2.5rem); /* Spazio fluido */
+    gap: clamp(1.5rem, 3vw, 2.5rem); 
     align-items: start;
     position: relative;
     z-index: 20;
-    max-width: 1440px; /* Limita larghezza massima per coerenza */
-    margin: 0 auto;    /* Centra la griglia */
+    max-width: 1600px; /* <--- CAMBIA DA 1440px A 1600px */
+    margin: 0 auto;    
 }
 /* Colonna sinistra (Capannone) */
 .capannone-col {
@@ -1076,14 +1075,14 @@ html::after {
 .header {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 0;         /* Tornato a 0 */
+  width: 100%;     /* Occupa tutto lo schermo */
+  /* transform e max-width sono stati rimossi! */
   z-index: 1000;
-  overflow-y: hidden; /* Nasconde la scrollbar verticale falsa */
-  background-color: rgba(0, 0, 0, 0.4);  /* Nero trasparente */
+  overflow-y: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(10px);
-
   transition: background-color 0.3s ease;
   color: white;
 }
@@ -1100,6 +1099,9 @@ html::after {
     align-items: center; 
     height: 80px; 
     padding: 0 var(--space-16); 
+    /* AGGIUNGI QUESTE DUE RIGHE: */
+    max-width: 1600px; /* Stessa larghezza del resto del sito */
+    margin: 0 auto;    /* Centra il contenuto */
 }
 
 .nav-logo img { 
@@ -2134,13 +2136,12 @@ a[href="cookie-policy.html"] {
 /* Container con limiti min/max */
 .container {
   width: 100%;
-  max-width: 1440px; /* <<== NUOVA REGOLA: Limite massimo per il contenuto */
-  margin-left: auto;
-  margin-right: auto;
-  /* Padding laterale fluido che si adatta allo schermo */
-  padding-left: clamp(1rem, 4vw, 2.5rem);
-  padding-right: clamp(1rem, 4vw, 2.5rem);
+  min-width: 320px;  
+  max-width: 1600px; /* <--- CAMBIA DA 1440px A 1600px */
+  margin: 0 auto;
+  padding: 0 var(--space-16);
 }
+
 
 body {
   min-width: 320px;
@@ -2900,7 +2901,8 @@ Si applica a schermi con larghezza massima di 1023px
     /* Se usi transform: scale(), evita overflow-y: hidden qui */
   }
 
-  html {
-    overflow: hidden;
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
     height: 100%;
   }

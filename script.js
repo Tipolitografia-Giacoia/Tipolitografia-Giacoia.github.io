@@ -415,25 +415,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function scalePage() {
-      const wrapper = document.querySelector('.page-wrapper');
-      const minWidth = 1024;   // soglia minima da  cui applicare scaling verso l'alto
-      const maxWidth = 1320;   // larghezza base "design"
-      const vw = window.innerWidth;
-      let scale = 1;
+    const wrapper = document.querySelector('.page-wrapper');
+    const minWidth = 1024;   
+    const maxWidth = 1600;   // Allineato alla larghezza massima del tuo CSS
+    const vw = window.innerWidth;
+    let scale = 1;
 
-      if (vw <= minWidth) {
-        // Per larghezze sotto o uguali a 1024, nessuno scaling: le regole specifiche sotto 1024 si attivano
-        scale = 1;
-      } else if (vw > minWidth && vw < maxWidth) {
-        // Scala da 1 (a 1024) a 1 (a 1320): scalatura lineare da 1024 a 1320
-        scale = vw / maxWidth;
-      } else if (vw >= maxWidth) {
-        // A partire da 1320, scala proporzionalmente oltre 1320
-        scale = vw / maxWidth;
-      }
+    if (vw <= minWidth) {
+      scale = 1;
+    } else if (vw > minWidth && vw < maxWidth) {
+      scale = vw / maxWidth;
+    } else if (vw >= maxWidth) {
+      scale = 1; // <--- MODIFICA: Ora smette di ingrandirsi e mantiene le proporzioni originali
+    }
 
-      wrapper.style.transform = `scale(${scale})`;
-      wrapper.style.transformOrigin = 'top center';
+    wrapper.style.transform = `scale(${scale})`;
+    wrapper.style.transformOrigin = 'top center';
     }
 
     window.addEventListener('resize', scalePage);
