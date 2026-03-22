@@ -64,27 +64,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Funzione riutilizzabile per andare al form di contatto
         // Funzione riutilizzabile per andare al form di contatto
+        // Funzione riutilizzabile per andare al form di contatto
         const goToContactFormWithProduct = (productName) => {
             const searchInput = document.getElementById('product-search');
             if (searchInput) {
                 searchInput.value = productName;
             }
             
-            // Puntiamo all'ancora della sezione per precisione
-            const contactSection = document.getElementById('contattaci-anchor') || document.getElementById('contattaci');
+            const contactSection = document.getElementById('contattaci');
             
             if (contactSection) {
-                // Calcoliamo la distanza esatta tra la vista attuale e la sezione
-                const distanceToScroll = contactSection.getBoundingClientRect().top;
-                
-                // Un ritardo microscopico per evitare conflitti con il touch di Android
                 setTimeout(() => {
-                    // Applichiamo lo scroll direttamente al BODY, come fatto per l'icona Home
-                    document.body.scrollBy({
-                        top: distanceToScroll,
+                    // 1. Troviamo a che punto della pagina siamo (funziona su tutti i browser)
+                    const currentScroll = document.body.scrollTop || document.documentElement.scrollTop || window.scrollY;
+                    
+                    // 2. Calcoliamo la coordinata Y assoluta dell'elemento (-80px per la navbar fissa)
+                    const targetY = contactSection.getBoundingClientRect().top + currentScroll - 80;
+
+                    // 3. Spariamo il comando di scroll sia al body che alla window per coprire Android al 100%
+                    document.body.scrollTo({
+                        top: targetY,
                         behavior: 'smooth'
                     });
-                }, 50);
+                    
+                    try {
+                        window.scrollTo({
+                            top: targetY,
+                            behavior: 'smooth'
+                        });
+                    } catch(e) {}
+                    
+                }, 100);
             }
         };
 
