@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function scalePage() {
     const wrapper = document.querySelector('.page-wrapper');
     const minWidth = 1024;   
-    const maxWidth = 1600;   // Allineato alla larghezza massima del tuo CSS
+    const maxWidth = 1400;   // Allineato alla larghezza massima del tuo CSS
     const vw = window.innerWidth;
     let scale = 1;
 
