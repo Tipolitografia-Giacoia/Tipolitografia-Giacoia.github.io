@@ -1280,8 +1280,13 @@ html::after {
   display: inline-block;
   white-space: nowrap;
   user-select: none;
-  margin: 0; /* ← RIMOSSI I MARGINI LATERALI */
-  flex-shrink: 0; /* Il pulsante non si restringe */
+  margin: 0; 
+  flex-shrink: 0;
+  
+  /* NUOVE REGOLE DA AGGIUNGERE */
+  position: relative;
+  z-index: 20; /* Lo forza sopra a qualsiasi immagine del carosello ingrandita */
+  touch-action: manipulation; /* Disabilita i delay di tocco e gestures indesiderate su Android */
 }
 
 .request-info-button:hover {

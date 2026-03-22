@@ -70,7 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             const contactSection = document.getElementById('contattaci');
             if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
+                // Il timeout di 100ms permette ad Android di concludere l'evento touch 
+                // prima di forzare lo scorrimento, evitando che venga interrotto.
+                setTimeout(() => {
+                    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             }
         };
 
