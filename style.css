@@ -2923,3 +2923,29 @@ html {
     overflow-y: auto;
     height: 100%;
   }
+
+/* ============================================== */
+/* FIX SPAZIATURA CAROSELLO MOBILE (AGGIORNATO)   */
+/* ============================================== */
+@media (max-width: 768px) {
+    /* 1. Riduci lo spazio tra il titolo "PRODOTTI." e le immagini */
+    #prodotti .section-title {
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* 2. Stringi il contenitore per eliminare il vuoto verticale */
+    .carousel-track {
+        height: 42vh !important;
+        margin-bottom: 0.5rem !important; /* Avvicina i pulsanti alle immagini */
+    }
+
+  .carousel-navigation {
+        gap: 15px !important; /* Prima era 40px! 15px è un ottimo compromesso per non far sbagliare il tocco col dito */
+    }
+
+    /* 4. (Opzionale) Riduci lo spazio globale della sezione */
+    #prodotti.section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
