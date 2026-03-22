@@ -63,18 +63,28 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentIndex = 0;
 
         // Funzione riutilizzabile per andare al form di contatto
+        // Funzione riutilizzabile per andare al form di contatto
         const goToContactFormWithProduct = (productName) => {
             const searchInput = document.getElementById('product-search');
             if (searchInput) {
                 searchInput.value = productName;
             }
-            const contactSection = document.getElementById('contattaci');
+            
+            // Puntiamo all'ancora della sezione per precisione
+            const contactSection = document.getElementById('contattaci-anchor') || document.getElementById('contattaci');
+            
             if (contactSection) {
-                // Il timeout di 100ms permette ad Android di concludere l'evento touch 
-                // prima di forzare lo scorrimento, evitando che venga interrotto.
+                // Calcoliamo la distanza esatta tra la vista attuale e la sezione
+                const distanceToScroll = contactSection.getBoundingClientRect().top;
+                
+                // Un ritardo microscopico per evitare conflitti con il touch di Android
                 setTimeout(() => {
-                    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
+                    // Applichiamo lo scroll direttamente al BODY, come fatto per l'icona Home
+                    document.body.scrollBy({
+                        top: distanceToScroll,
+                        behavior: 'smooth'
+                    });
+                }, 50);
             }
         };
 
